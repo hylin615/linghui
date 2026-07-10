@@ -1,0 +1,110 @@
+/* ============================================
+   玲辉门&家具厂 - 工程案例样式
+   ============================================ */
+
+.cases-page {
+  padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-16);
+  background: var(--color-gray-50);
+  min-height: 100vh;
+}
+
+/* 案例画廊 */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.case-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  aspect-ratio: 4 / 3;
+}
+
+.case-item:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.case-item .case-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  transition: transform var(--transition-slow);
+}
+
+.case-item:hover .case-img {
+  transform: scale(1.05);
+}
+
+.case-item .case-icon {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-2);
+  opacity: 0.8;
+}
+
+.case-item .case-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.7));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-4);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.case-item:hover .case-overlay {
+  opacity: 1;
+}
+
+/* 手机上常显标题 */
+@media (max-width: 767px) {
+  .case-item .case-overlay {
+    opacity: 1;
+    background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.65));
+  }
+}
+
+.case-overlay .case-name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--space-1);
+}
+
+.case-overlay .case-cat {
+  font-size: var(--font-size-xs);
+  color: var(--color-gold-lighter);
+}
+
+.case-item.hidden {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cases-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .case-item {
+    aspect-ratio: 1 / 1;
+  }
+}

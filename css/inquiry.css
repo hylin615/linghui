@@ -1,0 +1,110 @@
+/* ============================================
+   玲辉门&家具厂 - 在线询价样式
+   ============================================ */
+
+.inquiry-page {
+  padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-16);
+  background: var(--color-gray-50);
+  min-height: 100vh;
+}
+
+.inquiry-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* 表单区 */
+.inquiry-form-wrap {
+  background: var(--color-white);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.inquiry-form-wrap h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-navy);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-gray-100);
+}
+
+/* 侧边栏 */
+.inquiry-sidebar {
+  background: var(--color-white);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-4));
+}
+
+.inquiry-sidebar h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-navy);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.inquiry-sidebar .side-info {
+  margin-bottom: var(--space-6);
+}
+
+.inquiry-sidebar .side-info .info-item {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.inquiry-sidebar .side-info .info-icon {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.inquiry-sidebar .side-benefits {
+  list-style: none;
+  padding: 0;
+}
+
+.inquiry-sidebar .side-benefits li {
+  position: relative;
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  line-height: 1.7;
+}
+
+.inquiry-sidebar .side-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+@media (max-width: 1023px) {
+  .inquiry-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .inquiry-sidebar {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .inquiry-form-wrap {
+    padding: var(--space-4);
+  }
+
+  .inquiry-sidebar {
+    padding: var(--space-4);
+  }
+}

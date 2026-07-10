@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/images/placeholders/
+
+Sitemap: https://linghui.example.com/sitemap.xml

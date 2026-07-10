@@ -1,0 +1,169 @@
+/* ============================================
+   玲辉门&家具厂 - 产品中心样式
+   ============================================ */
+
+.products-page {
+  padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-16);
+  background: var(--color-gray-50);
+  min-height: 100vh;
+}
+
+/* 顶部筛选栏可吸附 */
+.filter-sticky {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 10;
+  background: var(--color-white);
+  padding: var(--space-3) 0;
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+/* 产品网格 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.product-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.product-card .card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card .card-image .ph-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .card-image .ph-img {
+  transform: scale(1.05);
+}
+
+.product-card .card-body {
+  padding: var(--space-4);
+}
+
+.product-card .card-name {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.product-card .card-specs {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.product-card .card-specs span {
+  background: var(--color-gray-50);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+/* 展开的详情 */
+.product-detail {
+  display: none;
+  padding: 0 var(--space-4) var(--space-4);
+  border-top: 1px solid var(--color-gray-100);
+  animation: detailIn 0.3s ease;
+}
+
+.product-detail.open {
+  display: block;
+}
+
+.product-detail .detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px dashed var(--color-gray-100);
+}
+
+.product-detail .detail-row dt {
+  color: var(--color-gray-500);
+}
+
+.product-detail .detail-row dd {
+  color: var(--color-gray-900);
+  font-weight: 500;
+}
+
+.product-detail .detail-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  margin-top: var(--space-3);
+  line-height: 1.6;
+}
+
+.product-detail .btn-inquiry {
+  margin-top: var(--space-4);
+  width: 100%;
+}
+
+@keyframes detailIn {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 300px; }
+}
+
+/* 隐藏过滤掉的产品 */
+.product-card.hidden {
+  display: none;
+}
+
+/* 空状态 */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-16) 0;
+  color: var(--color-gray-500);
+}
+
+.empty-state .empty-icon {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--space-4);
+}
+
+.empty-state p {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 1023px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

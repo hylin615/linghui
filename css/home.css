@@ -1,0 +1,340 @@
+/* ============================================
+   玲辉门&家具厂 - 首页样式
+   ============================================ */
+
+/* === Hero 横幅 === */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, var(--color-navy-dark) 0%, var(--color-navy) 40%, var(--color-navy-light) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-height) + var(--space-8)) var(--space-6) var(--space-12);
+}
+
+/* 背景纹理 */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(200, 150, 62, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(200, 150, 62, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: var(--font-size-4xl);
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.05em;
+}
+
+.hero .hero-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-gold-lighter);
+  margin-bottom: var(--space-8);
+  font-weight: 400;
+}
+
+.hero .hero-badges {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-10);
+}
+
+.hero .badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero .badge .badge-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  margin-right: var(--space-2);
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .hero .hero-badges {
+    gap: var(--space-2);
+  }
+
+  .hero .badge {
+    font-size: var(--font-size-xs);
+    padding: var(--space-2) var(--space-4);
+  }
+}
+
+/* === 数据展示条 === */
+.stats-strip {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.stats-strip .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stats-strip .stat-item {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  position: relative;
+}
+
+.stats-strip .stat-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40px;
+  background: var(--color-gray-200);
+}
+
+.stats-strip .stat-item:last-child::after {
+  display: none;
+}
+
+.stats-strip .stat-icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-2);
+}
+
+.stats-strip .stat-num {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  color: var(--color-gold);
+  display: block;
+}
+
+.stats-strip .stat-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-top: var(--space-1);
+}
+
+@media (max-width: 767px) {
+  .stats-strip .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-strip .stat-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .stats-strip .stat-item {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .stats-strip .stat-num {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* === 产品分类区段 === */
+.products-section {
+  padding: var(--space-16) 0;
+  background: var(--color-gray-50);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.category-card .cat-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform var(--transition-slow);
+}
+
+.category-card:hover .cat-bg {
+  transform: scale(1.05);
+}
+
+/* 分类卡片渐变背景 */
+.cat-bg-1 { background: linear-gradient(160deg, #1B2A4A, #2C3E6B); }
+.cat-bg-2 { background: linear-gradient(160deg, #2C3E6B, #1B3A5C); }
+.cat-bg-3 { background: linear-gradient(160deg, #1B3A5C, #2C4A3E); }
+.cat-bg-4 { background: linear-gradient(160deg, #3D528C, #1B2A4A); }
+
+/* 金属纹理模拟 */
+.category-card .cat-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.01) 2px,
+      rgba(255, 255, 255, 0.01) 4px
+    );
+}
+
+.category-card .cat-info {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: var(--space-6) var(--space-4);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: var(--color-white);
+}
+
+.category-card .cat-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.category-card .cat-desc {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  margin-bottom: var(--space-3);
+}
+
+.category-card .cat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-gold-lighter);
+  transition: gap var(--transition-fast);
+}
+
+.category-card:hover .cat-link {
+  gap: var(--space-2);
+}
+
+@media (max-width: 1023px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === 为什么选择我们 === */
+.trust-section {
+  padding: var(--space-16) 0;
+  background: var(--color-white);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+
+.trust-card {
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-gray-50);
+  transition: all var(--transition-base);
+}
+
+.trust-card:hover {
+  background: var(--color-gold-bg);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.trust-card .trust-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--space-4);
+  background: linear-gradient(135deg, var(--color-gold-bg), var(--color-gold-bg-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-3xl);
+}
+
+.trust-card h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+
+.trust-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  line-height: 1.8;
+}
+
+@media (max-width: 767px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
