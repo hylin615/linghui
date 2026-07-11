@@ -10,6 +10,7 @@
     {
       id: 1,
       name: '晋江华泰小区',
+      image: 'case-pkm-01.jpg',
       category: '平开门',
       icon: '🏠',
       description: '安装铝合金平开门 80 套，用于室内卫生间门和厨房门，白色烤漆，配磨砂玻璃。'
@@ -17,6 +18,7 @@
     {
       id: 2,
       name: '石狮万科金域中央',
+      image: 'case-tlm-01.jpg',
       category: '推拉门',
       icon: '🏢',
       description: '安装重型推拉门 120 套，用于阳台隔断，断桥铝合金，双层中空钢化玻璃，深灰色。'
@@ -24,6 +26,7 @@
     {
       id: 3,
       name: '泉州宝珊花园别墅',
+      image: 'case-jiaju-01.jpg',
       category: '铝合金家具',
       icon: '🏡',
       description: '定制全铝橱柜、衣柜、浴室柜共 3 套，白色门板搭配原木色柜体，零甲醛环保。'
@@ -31,6 +34,7 @@
     {
       id: 4,
       name: '泉州东海湾豪庭',
+      image: 'case-pkm-01.jpg',
       category: '平开门',
       icon: '🏘️',
       description: '安装窄边框平开门 60 套，黑色窄边框配长虹玻璃，极简风格装修。'
@@ -38,6 +42,7 @@
     {
       id: 5,
       name: '晋江阳光城',
+      image: 'case-tlm-02.jpg',
       category: '推拉门',
       icon: '🏗️',
       description: '安装铝合金推拉门 95 套，香槟金色，厨房和阳台隔断使用。'
@@ -45,6 +50,7 @@
     {
       id: 6,
       name: '泉州中骏世界城商铺',
+      image: 'case-tlm-03.jpg',
       category: '推拉门',
       icon: '🏬',
       description: '店面玻璃推拉门 20 套，重型轨道，通透大玻璃，氟碳喷涂黑色。'
@@ -52,6 +58,7 @@
     {
       id: 7,
       name: '晋江英林镇自建房',
+      image: 'case-jiaju-02.jpg',
       category: '铝合金家具',
       icon: '🏠',
       description: '定制全铝厨房橱柜 + 吊柜，不锈钢台面，白色门板，防水防潮防白蚁。'
@@ -59,6 +66,7 @@
     {
       id: 8,
       name: '泉州师范学院宿舍楼',
+      image: 'case-gc-01.jpg',
       category: '工程窗',
       icon: '🏫',
       description: '安装普通铝合金推拉窗 300 套，白色型材，5mm 钢化玻璃，批量工程。'
@@ -66,6 +74,7 @@
     {
       id: 9,
       name: '晋江万达写字楼',
+      image: 'case-gc-02.jpg',
       category: '工程窗',
       icon: '🏢',
       description: '安装断桥铝合金平开窗 200 套，灰色氟碳喷涂，双层中空玻璃，隔音隔热。'
@@ -88,8 +97,9 @@
 
       html +=
         '<div class="case-item' + hiddenClass + '" data-id="' + item.id + '" data-category="' + item.category + '">' +
-          '<div class="case-img" style="background:' + getCaseBg(item.id) + ';">' +
-            '<span class="case-icon">' + item.icon + '</span>' +
+          '<div class="case-img" style="background:' + getCaseBg(item.id) + '; position:relative; overflow:hidden;">' +
+            (item.image ? '<img src="assets/images/' + item.image + '" alt="' + esc(item.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' : '') +
+            '<span class="case-icon"' + (item.image ? ' style="position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,0.5);"' : '') + '>' + item.icon + '</span>' +
           '</div>' +
           '<div class="case-overlay">' +
             '<div class="case-name">' + esc(item.name) + '</div>' +
@@ -165,17 +175,21 @@
     var name = document.getElementById('lightboxName');
     var desc = document.getElementById('lightboxDesc');
 
-    // 用渐变色块代替图片
-    img.style.background = getCaseBg(item.id);
-    img.style.width = '100%';
-    img.style.maxWidth = '700px';
-    img.style.aspectRatio = '16 / 10';
-    img.style.borderRadius = '8px';
-    img.style.display = 'flex';
-    img.style.alignItems = 'center';
-    img.style.justifyContent = 'center';
-    img.style.fontSize = '4rem';
-    img.textContent = item.icon;
+    // 显示真实图片或渐变色块
+    if (item.image) {
+      img.innerHTML = '<img src="assets/images/' + item.image + '" alt="' + esc(item.name) + '" style="width:100%;max-width:700px;aspect-ratio:16/10;border-radius:8px;object-fit:contain;background:' + getCaseBg(item.id) + ';">';
+    } else {
+      img.style.background = getCaseBg(item.id);
+      img.style.width = '100%';
+      img.style.maxWidth = '700px';
+      img.style.aspectRatio = '16 / 10';
+      img.style.borderRadius = '8px';
+      img.style.display = 'flex';
+      img.style.alignItems = 'center';
+      img.style.justifyContent = 'center';
+      img.style.fontSize = '4rem';
+      img.textContent = item.icon;
+    }
 
     name.textContent = item.name;
     desc.textContent = item.description;
