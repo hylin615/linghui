@@ -13,6 +13,7 @@
       id: 1,
       name: '铝合金平开门 LY-P01',
       category: '平开门',
+      image: 'product-pkm-01.jpg',
       icon: '🚪',
       specs: ['铝合金', '钢化玻璃', '多色可选'],
       material: '6063 铝合金型材',
@@ -26,6 +27,7 @@
       id: 2,
       name: '铝合金重型平开门 LY-P02',
       category: '平开门',
+      image: 'product-pkm-02.jpg',
       icon: '🚪',
       specs: ['加厚型材', '双层钢化', '防盗'],
       material: '6063 加厚铝合金型材',
@@ -39,6 +41,7 @@
       id: 3,
       name: '窄边框平开门 LY-P03',
       category: '平开门',
+      image: 'product-pkm-03.jpg',
       icon: '✨',
       specs: ['窄边框', '极简风格', '长虹玻璃'],
       material: '6063 铝合金窄边框型材',
@@ -54,6 +57,7 @@
       id: 4,
       name: '铝合金推拉门 LY-T01',
       category: '推拉门',
+      image: 'product-tlm-01.jpg',
       icon: '🪟',
       specs: ['静音滑轮', '钢化玻璃', '防尘轨道'],
       material: '6063 铝合金型材',
@@ -67,6 +71,7 @@
       id: 5,
       name: '重型推拉门 LY-T02',
       category: '推拉门',
+      image: 'product-tlm-02.jpg',
       icon: '🪟',
       specs: ['重型轨道', '双层中空', '断桥隔热'],
       material: '断桥铝合金型材',
@@ -82,6 +87,7 @@
       id: 6,
       name: '铝合金橱柜 LY-F01',
       category: '铝合金家具',
+      image: 'product-jiaju-01.jpg',
       icon: '🍳',
       specs: ['防水防潮', '零甲醛', '可定制'],
       material: '铝合金框架 + 不锈钢台面',
@@ -93,6 +99,7 @@
       id: 7,
       name: '铝合金衣柜 LY-F02',
       category: '铝合金家具',
+      image: 'product-jiaju-02.jpg',
       icon: '👔',
       specs: ['全铝框架', '零甲醛', '可定制'],
       material: '铝合金框架 + 板材门板',
@@ -104,6 +111,7 @@
       id: 8,
       name: '铝合金浴室柜 LY-F03',
       category: '铝合金家具',
+      image: 'product-jiaju-03.jpg',
       icon: '🪞',
       specs: ['全防水', '镜柜一体', '台下盆'],
       material: '铝合金柜体 + 石英石台面',
@@ -115,6 +123,7 @@
       id: 9,
       name: '铝合金置物架 LY-F04',
       category: '铝合金家具',
+      image: 'product-jiaju-04.jpg',
       icon: '📦',
       specs: ['承重强', '自由组合', '多场景'],
       material: '铝合金立柱 + 隔板',
@@ -128,6 +137,7 @@
       id: 10,
       name: '断桥铝合金窗 LY-W01',
       category: '工程窗',
+      image: 'product-jiaju-05.jpg',
       icon: '🪟',
       specs: ['断桥隔热', '双层中空', '工程批量'],
       material: '断桥铝合金型材',
@@ -140,6 +150,7 @@
       id: 11,
       name: '普通铝合金窗 LY-W02',
       category: '工程窗',
+      image: 'product-jiaju-06.jpg',
       icon: '🪟',
       specs: ['经济实惠', '推拉/平开', '工程批量'],
       material: '普通铝合金型材',
@@ -168,8 +179,9 @@
       html +=
         '<div class="product-card' + hiddenClass + '" data-category="' + product.category + '" data-id="' + product.id + '">' +
           '<div class="card-image">' +
-            '<div class="ph-img" style="background:' + getCardBg(product.id) + ';">' +
-              '<span style="font-size:2.5rem;">' + product.icon + '</span>' +
+            '<div class="ph-img" style="background:' + getCardBg(product.id) + '; position:relative; overflow:hidden;">' +
+              (product.image ? '<img src="assets/images/' + product.image + '" alt="' + esc(product.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' : '') +
+              '<span style="font-size:2.5rem;' + (product.image ? 'position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,0.5);' : '') + '">' + product.icon + '</span>' +
             '</div>' +
           '</div>' +
           '<div class="card-body">' +
