@@ -98,8 +98,8 @@
       html +=
         '<div class="case-item' + hiddenClass + '" data-id="' + item.id + '" data-category="' + item.category + '">' +
           '<div class="case-img" style="background:' + getCaseBg(item.id) + '; position:relative; overflow:hidden;">' +
-            (item.image ? '<img src="assets/images/' + item.image + '" alt="' + esc(item.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' : '') +
-            '<span class="case-icon"' + (item.image ? ' style="position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,0.5);"' : '') + '>' + item.icon + '</span>' +
+            (item.image ? '<img src="assets/images/' + item.image + '" alt="' + esc(item.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="var s=this.nextElementSibling;if(s)s.style.display=\'flex\';this.style.display=\'none\'">' : '') +
+            '<span class="case-icon"' + (item.image ? ' style="position:relative;z-index:1;display:none;align-items:center;justify-content:center;width:100%;height:100%;"' : '') + '>' + item.icon + '</span>' +
           '</div>' +
           '<div class="case-overlay">' +
             '<div class="case-name">' + esc(item.name) + '</div>' +
