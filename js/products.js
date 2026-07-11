@@ -180,8 +180,8 @@
         '<div class="product-card' + hiddenClass + '" data-category="' + product.category + '" data-id="' + product.id + '">' +
           '<div class="card-image">' +
             '<div class="ph-img" style="background:' + getCardBg(product.id) + '; position:relative; overflow:hidden;">' +
-              (product.image ? '<img src="assets/images/' + product.image + '" alt="' + esc(product.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' : '') +
-              '<span style="font-size:2.5rem;' + (product.image ? 'position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,0.5);' : '') + '">' + product.icon + '</span>' +
+              (product.image ? '<img src="assets/images/' + product.image + '" alt="' + esc(product.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="var s=this.nextElementSibling;if(s)s.style.display=\'flex\';this.style.display=\'none\'">' : '') +
+              '<span style="font-size:2.5rem;' + (product.image ? 'position:relative;z-index:1;display:none;align-items:center;justify-content:center;width:100%;height:100%;' : '') + '">' + product.icon + '</span>' +
             '</div>' +
           '</div>' +
           '<div class="card-body">' +
